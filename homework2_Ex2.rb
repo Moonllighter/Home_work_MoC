@@ -4,7 +4,7 @@ loop do
   if result =~ /1.*1/
     puts "Conditions are not met, I stop the program"
     break
- else
+  else
     puts result.to_i * 256
   end
 end
