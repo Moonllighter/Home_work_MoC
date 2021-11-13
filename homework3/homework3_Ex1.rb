@@ -27,7 +27,7 @@ class User
       true
     end
   end
-  def valid_emaile
+  def valid_email
     if @email == nil
       'email can not be empty'
     elsif !@email.is_a?(String)
@@ -39,6 +39,6 @@ class User
     end
   end
   def errors
-  arr = ["first_name #{valid(@first_name)}", "last_name #{valid(@last_name)}", "email #{valid_emaile}"]
+  arr = ["first_name #{valid(@first_name)}", "last_name #{valid(@last_name)}", "email #{valid_email}"]
   end
 end
