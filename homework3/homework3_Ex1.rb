@@ -1,21 +1,20 @@
 class User
   attr_accessor :first_name, :last_name, :email
+  
   def initialize(first_name, last_name, email)
     @first_name = first_name
     @last_name  = last_name
     @email      = email
   end
+  
   def full_name
     "#{@first_name} #{@last_name}"
   end
+  
   def is_valid_email?
-    case @email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-    when nil
-      false
-    else
-      true
-    end  
+    @email.match?( /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i )
   end
+  
   def valid(name)
     if name == nil
       " can not be empty"
@@ -27,6 +26,7 @@ class User
       true
     end
   end
+  
   def valid_email
     if @email == nil
       'email can not be empty'
@@ -38,6 +38,7 @@ class User
       true
     end
   end
+  
   def errors
   arr = ["first_name #{valid(@first_name)}", "last_name #{valid(@last_name)}", "email #{valid_email}"]
   end
