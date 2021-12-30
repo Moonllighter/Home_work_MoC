@@ -1,56 +1,55 @@
+require './homework4_Ex1_1.rb'
+require './homework4_Ex2.rb'
 class BricksFactory
-  require './homework4_Ex2.rb'
   include BricksSort
-
-  attr_accessor :sum_of_bricks
+  attr_reader :sum_of_bricks
 
   def initialize(sum_of_bricks)
     @sum_of_bricks = sum_of_bricks
   end
 
   def creation_bricks
-    colour = []
+    color = []
     state = []
     numbers = []
-    @result = []
+    @new_bricks = []
+    broken_num = 1
       @sum_of_bricks.times do |number|
-        colour << %w[red yellow white black][rand(4)]
-          if rand(5) == 4
+        color << %w[red yellow white black][rand(4)]
+        if rand(5) == 4
           state << 'broken'
-          numbers << nil
+          numbers << '--'
+          broken_num = broken_num - 1
         else
           state << 'whole'
-          numbers << number+1
+          numbers << number+broken_num
         end
-        @result << [colour[number],numbers[number], state[number]]
+        @new_bricks << Bricks.new(color[number], numbers[number], state[number])
       end
-      @result
+      @new_bricks
   end
 
   def whole_bricks
-    creation_bricks
     @whole_result = []
-    @result.map do |a|
-      if a.include?('whole')
-        @whole_result << a 
+    @new_bricks.map do |a|
+      if a.state == 'whole'
+        @whole_result << a
       end
     end
-    @whole_result     
+    @whole_result
   end
 
-  def last_whole_bricks(colour_user = 'white')
-    whole_bricks
+  def last_whole_bricks(color_user = 'white')
     ten_last_bricks = []
     @whole_result.map do |a|
-      if a.include?(colour_user)
-        ten_last_bricks << a        
+      if a.color == color_user
+        ten_last_bricks << a
       end
     end
-    ten_last_bricks.last(10)    
+    ten_last_bricks.last(10) 
   end
 
-  def colour_sort_whole
-    whole_bricks
-    @whole_result.sort_by{|info| info[0]}
+  def color_sort_whole
+    @whole_result.sort_by{|bricks| bricks.color}
   end
 end

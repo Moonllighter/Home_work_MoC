@@ -2,14 +2,14 @@ module BricksSort
   def sorter_bricks(name)
     error_arr = []
     case name
-    when 'colour'
-      self.sort_by{|info| info[0]}
-    when 'serial number'
-      self.sort_by{|info| info[1]}
+    when 'color'
+      @new_bricks.sort_by{|bricks| bricks.color}
+    when 'serial_number'
+      @new_bricks.sort_by{|bricks| bricks.serial_number}
     when 'state'
-      self.sort_by{|info| info[2]}
+      @new_bricks.sort_by{|bricks| bricks.state}
     else
-      puts "sorry this item doesn't exist"
+      puts "sorry this item doesn't exist #{error_arr}"
       error_arr << name
     end    
   end
