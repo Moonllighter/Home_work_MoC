@@ -31,7 +31,7 @@ class BricksFactory
 
   def whole_bricks
     @whole_result = []
-    @new_bricks.map do |a|
+    @new_bricks.each do |a|
       if a.state == 'whole'
         @whole_result << a
       end
@@ -41,7 +41,7 @@ class BricksFactory
 
   def last_whole_bricks(color_user = 'white')
     ten_last_bricks = []
-    @whole_result.map do |a|
+    @whole_result.each do |a|
       if a.color == color_user
         ten_last_bricks << a
       end
