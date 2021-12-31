@@ -15,7 +15,7 @@ class BricksFactory
     @new_bricks = []
     broken_num = 1
       @sum_of_bricks.times do |number|
-        color << %w[red yellow white black][rand(4)]
+        color << %w[red yellow white black].sample
         if rand(5) == 4
           state << 'broken'
           numbers << '--'
