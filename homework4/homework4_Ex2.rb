@@ -9,8 +9,8 @@ module BricksSort
     when 'state'
       @new_bricks.sort_by{|bricks| bricks.state}
     else
-      puts "sorry this item doesn't exist #{error_arr}"
       error_arr << name
+      puts "sorry this item doesn't exist #{error_arr}"
     end    
   end
 end
